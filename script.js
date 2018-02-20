@@ -1,31 +1,70 @@
-//zad.1
+var startButton = document.getElementById('start');
+startButton.addEventListener('click', () => stopwatch.start());
 
-const string1 = "Hello";
-const string2 = "World";
+var stopButton = document.getElementById('stop');
+stopButton.addEventListener('click', () => stopwatch.stop());
 
-console.log(`Zadanie 1: ${string1} ${string2}`);
 
-//zad.2
+class Stopwatch {
+    constructor(display) {
+        this.running = false;
+        this.display = display;
+        this.reset();
+        this.print(this.times);
+    }
 
-const multiply = (a = 1, b = 1) => a * b
-console.log(`Zadanie 2: ${multiply()}`);
+    reset() {
+        this.times = {
+            minutes: 0,
+            seconds: 0,
+            miliseconds: 0
+        };
+    }
 
-//zad.3
+    print() {
+        this.display.innerText = this.format(this.times);
+	}
 
-const average = (...args) => {
-    let sum = 0;
-    args.forEach(arg => sum+=arg);
-    return sum / args.length;
+	format(times) {
+        return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
+	}
+	start() {
+    if (!this.running) {
+        this.running = true;
+        this.watch = setInterval(() => this.step(), 10);
+    	}
+	}
+	step() {
+	    if (!this.running) return;
+	    this.calculate();
+	    this.print();
+	}
+
+	calculate() {
+	    this.times.miliseconds += 1;
+	    if (this.times.miliseconds >= 100) {
+	        this.times.seconds += 1;
+	        this.times.miliseconds = 0;
+	    }
+	    if (this.times.seconds >= 60) {
+	        this.times.minutes += 1;
+	        this.times.seconds = 0;
+	    }
+	}
+
+	stop() {
+	    this.running = false;
+	    clearInterval(this.watch);
+	}
 };
-console.log(`Zadanie 3: ${average(5,45,87)}`);
+	function pad0(value) {
+    let result = value.toString();
+    if (result.length < 2) {
+        result = '0' + result;
+    }
+    return result;
+	}
 
 
-//zad.4 
-const grades = [1, 5, 5, 5, 4, 3, 3, 2, 1];
-console.log(`Zadanie 4: ${average(...grades)}`);
+const stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
 
-
-//zad.5 
-const data = [1, 4, 'Iwona', false, 'Nowak'];
-const [ , , firstname, , lastname] = data;
-console.log(`Zadanie 5: ${firstname} ${lastname}`);
