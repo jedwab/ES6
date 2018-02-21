@@ -1,7 +1,7 @@
-var startButton = document.getElementById('start');
+const startButton = document.getElementById('start');
 startButton.addEventListener('click', () => stopwatch.start());
 
-var stopButton = document.getElementById('stop');
+const stopButton = document.getElementById('stop');
 stopButton.addEventListener('click', () => stopwatch.stop());
 
 
@@ -26,13 +26,13 @@ class Stopwatch {
 	}
 
 	format(times) {
-        return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
+        	return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
 	}
 	start() {
-    if (!this.running) {
-        this.running = true;
-        this.watch = setInterval(() => this.step(), 10);
-    	}
+		if (!this.running) {
+		this.running = true;
+		this.watch = setInterval(() => this.step(), 10);
+		}
 	}
 	step() {
 	    if (!this.running) return;
@@ -58,12 +58,13 @@ class Stopwatch {
 	}
 };
 	function pad0(value) {
-    let result = value.toString();
-    if (result.length < 2) {
-        result = '0' + result;
-    }
-    return result;
+	    let result = value.toString();
+	    if (result.length < 2) {
+		result = '0' + result;
+	    }
+	    return result;
 	}
+	
 
 
 const stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
