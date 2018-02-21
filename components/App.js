@@ -24,15 +24,15 @@ class App extends React.Component {
 	}
 
 	format(times) {
-        return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
+        	return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
 	}
 	start() {
-        if (!this.state.running) {
-            this.setState ({
-                running:true
-            });
-            this.watch = setInterval(() => this.step(), 10);
-        	}
+		if (!this.state.running) {
+		    this.setState ({
+			running:true
+		    });
+		    this.watch = setInterval(() => this.step(), 10);
+			}
 	}
 	step() {
 	    if (!this.running) return;
@@ -77,13 +77,12 @@ class App extends React.Component {
     }
 };
 	function pad0(value) {
-    let result = value.toString();
-    if (result.length < 2) {
-        result = '0' + result;
-    }
-    return result;
-	};
-
+        let result = value.toString();
+        if (result.length < 2) {
+            result = '0' + result;
+        }
+        return result;
+    	};
 
 ReactDOM.render(
     <App/>,
