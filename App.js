@@ -66,25 +66,25 @@ class App extends React.Component {
 	}
 
     render() {
-    return (
-      <div className="container">
-        <div>
-          <button onClick={this.start}>start</button>
-          <button onClick={this.stop}>stop</button>
-        </div>
-       </div>
-       );
-    }
+	    return (
+	    	<div className="container">
+			<div>
+				<button onClick={this.start}>start</button>
+				<button onClick={this.stop}>stop</button>
+			</div>
+		</div>
+		);
+	}
 };
 	function pad0(value) {
-        let result = value.toString();
-        if (result.length < 2) {
-            result = '0' + result;
-        }
-        return result;
-    	};
+		let result = value.toString();
+		if (result.length < 2) {
+		    result = '0' + result;
+		}
+		return result;
+		};
 
 ReactDOM.render(
     <App/>,
-    document.getElementById('app')
+document.getElementById('app')
 )
