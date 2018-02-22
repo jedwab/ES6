@@ -30,7 +30,7 @@ class App extends React.Component {
                     Github users search
                 </h1>
                 <form onSubmit={event => this.onSubmit(event)}>
-                    <label htmlFor="searchText">Search by user name</label>
+                    <label htmlFor="searchText">Search by user's name</label>
                     <input
                         type="text"
                         id="searchText"
