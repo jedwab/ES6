@@ -11,6 +11,7 @@ class App extends React.Component {
 				miliseconds: 0
 			}
 		}
+	
     }
 
     reset() {
